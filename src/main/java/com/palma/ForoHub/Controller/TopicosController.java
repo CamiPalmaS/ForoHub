@@ -36,7 +36,7 @@ public class TopicosController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    //por busqueda parcial del titulo
+    //por busqueda parcial del titulo: /buscar?titulo=${palabra}
     @GetMapping("/buscar")
     public List<Topicos> buscarPorTitulo(@RequestParam String titulo){
         return repository.findByTituloContainingIgnoreCase(titulo);
