@@ -1,10 +1,12 @@
 package com.palma.ForoHub.Models;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record DatosTopico(
-        String titulo,
-        String mensaje,
-        String status,
-        String autor,
-        String curso
+        @NotBlank String titulo,
+        @NotBlank String mensaje,
+        @NotBlank String status,
+        @NotBlank String autor,
+        @NotBlank String curso
 ) {
 }
