@@ -7,6 +7,7 @@ import com.palma.ForoHub.Repositorio.TopicoRepositorio;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class TopicosController {
     }
 
     //metodo POST para crear nuevos topicos
+    @Transactional
     @PostMapping
     public ResponseEntity<?> crearTopico(@Valid @RequestBody DatosTopico datos) {
         // Verificar duplicados
@@ -66,6 +68,7 @@ public class TopicosController {
     }
 
     //metodo PUT
+    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<Topicos> actualizarTopico(
             @PathVariable Long id,
@@ -92,6 +95,7 @@ public class TopicosController {
     }
 
     //metodo DELETE por id
+    @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity eliminarTopico(@PathVariable Long id) {
         Optional<Topicos> topicoOptional = repository.findById(id);
